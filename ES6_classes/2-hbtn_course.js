@@ -1,8 +1,24 @@
 class HolbertonCourse {
   constructor(name, length, students) {
-      this._name = typeof name === 'string' ? name : '';
-      this._length = typeof length === 'number' ? length : 0;
-      this._students = Array.isArray(students) ? students : [];
+    // Verify name is a string
+      if (typeof name !== 'string') {
+        throw new TypeError();
+      }
+
+      // Verify length is a number
+      if (typeof length !== 'number') {
+        throw new TypeError();
+      }
+
+    // Verify length is a number
+    if (!Array.isArray(students) || !students.every(student => typeof student)) === 'string')) {
+        throw new TypeError();
+    }
+
+    // Store attributes with underscore
+    this._name = name;
+    this._length = length;
+    this._students = students;
   }
 
 // Getter and setter for name attribute
