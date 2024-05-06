@@ -20,11 +20,11 @@ get name() {
 }
 set name(newName) {
   if (typeof newName === 'string') {
-      this._name
+      this._name = newName;
   }
 }
 
 displayFullCurrency() {
-    return`${this.name} (${this.code})`;
+    return`${this._name} (${this._code})`;
   }
 }
