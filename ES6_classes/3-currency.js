@@ -1,7 +1,7 @@
 class Currency {
     constructor(code, name) {
       this._code = typeof code === 'string' ? code : '';
-      this.name = typeof name === 'string' ? name : '';
+      this._name = typeof name === 'string' ? name : '';
 }
 
 // Getter and setter for code
