@@ -2,17 +2,17 @@ class HolbertonCourse {
   constructor(name, length, students) {
     // Verify name is a string
       if (typeof name !== 'string') {
-        throw new TypeError();
+        throw new TypeError('Name must be non-empty string');
       }
 
       // Verify length is a number
       if (typeof length !== 'number') {
-        throw new TypeError();
+        throw new TypeError('Length be positive number');
       }
 
     // Verify length is a number
     if (!Array.isArray(students) || !students.every(student => typeof student)) === 'string')) {
-        throw new TypeError();
+        throw new TypeError('Students must be an non-empty array of strings');
     }
 
     // Store attributes with underscore
