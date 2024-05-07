@@ -12,7 +12,7 @@ export default class HolbertonCourse {
 
     // Verify length is a number
     if (!Array.isArray(students) || students.some((student) => typeof student !== 'string' || student.trim().length === 0)) {
-      throw new TypeError('Students must be an non-empty array of strings');
+      throw new Error('Students must be an non-empty array of strings');
     }
 
     // Store attributes with underscore
@@ -51,7 +51,7 @@ export default class HolbertonCourse {
 
   set students(newStudents) {
     if (!Array.isArray(newStudents) || newStudents.some((student) => typeof student !== 'string' || student.trim().length === 0)) {
-      throw new TypeError('Students must be non-empty array of strings');
+      throw new Error('Students must be non-empty array of strings');
     }
     this._students = newStudents;
   }
