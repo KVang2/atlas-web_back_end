@@ -1,17 +1,17 @@
 export default class HolbertonCourse {
   constructor(name, length, students) {
     // Verify name is a string
-      if (typeof name !== 'string') {
+      if (typeof name !== 'string' || name.trim().length === 0) {
         throw new TypeError('Name must be non-empty string');
       }
 
       // Verify length is a number
-      if (typeof length !== 'number') {
+      if (typeof length !== 'number' || length <= 0) {
         throw new TypeError('Length be positive number');
       }
 
     // Verify length is a number
-    if (!Array.isArray(students) || !students.every(student => typeof student)) === 'string')) {
+    if (!Array.isArray(students) || !students.every(student => typeof student === 'string' || student.trim().length === 0)) {
         throw new TypeError('Students must be an non-empty array of strings');
     }
 
@@ -26,9 +26,10 @@ get name() {
   return this._name;
 }
 set name(newName) {
-  if (typeof newName === 'string') {
-      this._name = newName;
+  if (typeof newName !== 'string' || newName.trim().length === 0) {
+    throw new Error('Name must be non-empty');
   }
+  this._name = newName;
 }
 
 // Getter and setter for length attri
@@ -36,7 +37,7 @@ get length() {
   return this._length;
 }
 set length(newLength) {
-  if (typeof newLength === 'number') {
+  if (typeof newLength === 'number' && newLength > 0) {
       this._length = newLength;
   }
 }
@@ -46,7 +47,7 @@ get students() {
   return this._students;
 }
 set students(newStudents) {
-  if (Array.isArray(newStudents)) {
+  if (Array.isArray(newStudents) && newStudents.every(student => typeof student === 'string' && student.trim().length > 0)) {
       this._students = newStudents;
     }
   }
