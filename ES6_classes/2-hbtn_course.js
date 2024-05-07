@@ -47,10 +47,9 @@ get students() {
   return this._students;
 }
 set students(newStudents) {
-  if (Array.isArray(newStudents) && newStudents.every(student => typeof student === 'string' && student.trim().length > 0)) {
-      this._students = newStudents;
-  } else {
-        throw new TypeError('Students must be non-empty array of strings');
-    }
+  if (!Array.isArray(newStudents) || !newStudents.every(student => typeof student === 'string' && student.trim().length > 0)) {
+    throw new TypeError('Students must be non-empty array of strings');
+  }
+  this._students = newStudents;
   }
 }
