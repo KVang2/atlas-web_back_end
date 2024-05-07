@@ -29,14 +29,12 @@ export default class Currency {
   }
 
   set name(newName) {
-  if (typeof newName !== 'string' || newName.trim().length === 0) {
-    throw new Error('Name must be a non empty string');
+    if (typeof newName !== 'string' || newName.trim().length === 0) {
+      throw new Error('Name must be a non empty string');
     }
     this._name = newName;
   }
 
-displayFullCurrency() {
-    return(`${this._name} (${this._code})`);
-
-  }
+  displayFullCurrency() {
+    return (`${this._name} (${this._code})`);  }
 }
