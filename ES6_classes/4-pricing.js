@@ -22,7 +22,7 @@ export default class Pricing {
     if (typeof newAmount !== 'number' || newAmount < 0) {
         throw new Error('Amount must be a positive number');
     }
-    this._currency = newCurrency;
+    this._amount = newAmount;
   }
 
   // Getter/Setter for currency
