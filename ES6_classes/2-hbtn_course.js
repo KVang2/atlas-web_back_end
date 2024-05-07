@@ -34,24 +34,25 @@ export default class HolbertonCourse {
   }
 
   // Getter and setter for length attri
-    get length() {
+  get length() {
     return this._length;
-}
+  }
 
-set length(newLength) {
-  if (typeof newLength === 'number' && newLength > 0) {
+  set length(newLength) {
+    if (typeof newLength === 'number' && newLength > 0) {
       this._length = newLength;
+    }
   }
-}
 
-// Getter and setter for students attri
-get students() {
-  return this._students;
-}
-set students(newStudents) {
-  if (!Array.isArray(newStudents) || newStudents.some(student => typeof student !== 'string' || student.trim().length === 0)) {
-    throw new TypeError('Students must be non-empty array of strings');
+  // Getter and setter for students attri
+  get students() {
+    return this._students;
   }
-  this._students = newStudents;
+
+  set students(newStudents) {
+    if (!Array.isArray(newStudents) || newStudents.some((student) => typeof student !== 'string' || student.trim().length === 0)) {
+      throw new TypeError('Students must be non-empty array of strings');
+    }
+    this._students = newStudents;
   }
 }
