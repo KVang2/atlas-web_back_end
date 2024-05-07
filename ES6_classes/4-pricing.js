@@ -47,6 +47,6 @@ export default class Pricing {
     if (typeof conversionRate !== 'number' || conversionRate <= 0) {
         throw new Error('Conversion rate must be a positive number');
     }
-    return amount * conversionRaate;
+    return amount * conversionRate;
   }
 }
