@@ -10,7 +10,7 @@ export default class HolbertonCourse {
       throw new TypeError('Length be positive number');
     }
 
-    // Verify length is a number
+    // Verify student
     if (!Array.isArray(students) || students.some((student) => typeof student !== 'string' || student.trim().length === 0)) {
       throw new Error('Students must be an non-empty array of strings');
     }
