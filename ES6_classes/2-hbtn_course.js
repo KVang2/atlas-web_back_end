@@ -52,4 +52,5 @@ set students(newStudents) {
   } else {
         throw new TypeError('Students must be non-empty array of strings');
     }
+  }
 }
