@@ -1,9 +1,10 @@
 export default function getStudentIdsSum(getListStudents) {
   const students = getListStudents();
 
-  if (!Array.isArray(getListStudents)) {
+  if (!Array.isArray(students)) {
       return 0;
   }
 
-  return students.reduce((sum, student) => sum + student.id, 0);
+  const reducer = (sum, student) => sum + student.id;
+  return students.reduce(reducer, 0);
 }
