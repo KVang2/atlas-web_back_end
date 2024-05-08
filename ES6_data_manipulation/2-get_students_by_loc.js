@@ -1,5 +1,7 @@
-export default function getStudentsByLocation(students, city) {
-  if (!Array.isArray(students) || students.length === 0 || typeof city !== 'string' || city.trim() === '') {
+export default function getStudentsByLocation(getListStudents, city) {
+    const students = getListStudents();
+
+  if (!Array.isArray(getListStudents) || students.length === 0 || typeof city !== 'string' || city.trim() === '') {
    return [];   
   }
 
