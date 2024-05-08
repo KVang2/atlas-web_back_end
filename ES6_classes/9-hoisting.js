@@ -1,5 +1,4 @@
 export class HolbertonClass {
-  // Constructor
   constructor(year, location) {
     this._year = year;
     this._location = location;
@@ -29,7 +28,7 @@ export class StudentHolberton {
   }
 
   get holbertonClass() {
-    return this.holbertonClass;
+    return this._holbertonClass;
   }
 
   get fullStudentDescription() {
