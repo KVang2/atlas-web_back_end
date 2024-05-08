@@ -5,8 +5,13 @@ export default function cleanSet(startstring) {
 
 let result = '';
 set.forEach((value) => {
-  if (value.startsWith(startString)) {
-    result += `${value.substring(strartString.length)}-`;
+  if (typeof value === 'string' && value.startsWith(startString)) {
+    if (startString === '' {
+        result += value + '-';
+    } else {
+        const restOfString = value.substring(startString.length);
+        result += startString + restOfString + '-';
+    }
   }
 });
 
