@@ -15,10 +15,6 @@ export default class Airport {
   }
 
   toString() {
-    return `[object ${this[Symbol.toStringTag]}]`;
-  }
-
-  get [Symbol.toStringTag]() {
-    return 'Airport';
+    return `Airport: ${this._name} (${this._code})`;
   }
 }
