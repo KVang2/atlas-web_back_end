@@ -1,6 +1,5 @@
 export default function getStudentIdsSum(getListStudents) {
   const students = getListStudents();
-
   if (!Array.isArray(students)) {
       return 0;
   }
