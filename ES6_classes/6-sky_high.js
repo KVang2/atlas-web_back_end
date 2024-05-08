@@ -1,10 +1,11 @@
 import Building from './5-building';
 
 export default class SkyHighBuilding extends Building {
-    // Constructor attributes
-    constructor(sqft, floors) {
-        super(sqft);
-        this._floors = floors;        
+  // Constructor attributes
+  constructor(sqft, floors) {
+      super(sqft);
+      this._floors = floors;
+      this._sqft = sqft;
     }
 
   // Getters
