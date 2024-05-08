@@ -1,6 +1,6 @@
 export default function updateUniqueItems(groceryMap) {
   if (!(groceryMap instanceof Map)) {
-    throw new Error('Cannot be process');
+    throw new Error('Cannot process');
   }
   groceryMap.forEach((value, key) => {
     if (value === 1) {
