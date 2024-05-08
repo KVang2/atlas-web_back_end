@@ -1,23 +1,7 @@
-export default function cleanSet(startstring) {
-  if (!(set instanceof Set) || startString !== 'string') {
+export default function cleanSet(set, startstring) {
+  if ((startString === '' || typeof startString !== 'string') {
     throw new Error('Invalid arguments');
-}   
-
-let result = '';
-set.forEach((value) => {
-  if (typeof value === 'string' && value.startsWith(startString)) {
-    if (startString === '' {
-        result += value + '-';
-    } else {
-        const restOfString = value.substring(startString.length);
-        result += startString + restOfString + '-';
-    }
   }
-});
-
-  if (result.endsWith('-')) {
-    result = result.slice(0, -1);
-  }
-
-return result;
+      const filteredValues = Array.from(set).filter(element => element.startsWith(startString));
+      return filteredValues.map(element => element.slice(startString.length)).join('-');
 }
