@@ -1,5 +1,4 @@
-export default function getStudentsByLocation (getListStudents, city) {
-
+export default function getStudentsByLocation(getListStudents, city) {
   if (!Array.isArray(getListStudents)) {
     return [];
   }
