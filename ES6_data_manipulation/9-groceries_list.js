@@ -1,14 +1,14 @@
-export default funtion groceriesList() {
+export default function groceriesList() {
   // Creating a new Map to store groceries
-  const groceryMap = new Map();
+  const groceryItem = new Map();
 
   // Add grocery items (name, quantity) to the map
-  groceryMap.set('Apples', 10);
-  groceryMap.set('Tomatoes', 10);
-  groceryMap.set('Pasta', 1);
-  groceryMap.set('Rice', 1);
-  groceryMap.set('Banana', 5);
+  groceryItem.set('Apples', 10);
+  groceryItem.set('Tomatoes', 10);
+  groceryItem.set('Pasta', 1);
+  groceryItem.set('Rice', 1);
+  groceryItem.set('Banana', 5);
 
   // Return map
-  return groceryMap;
+  return groceryItem;
 }
