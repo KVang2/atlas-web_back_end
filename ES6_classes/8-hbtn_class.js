@@ -22,4 +22,5 @@ export default class HolbertonCLass {
   toString() {
     return this._location;
   }
+
 }
