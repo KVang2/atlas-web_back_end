@@ -11,7 +11,7 @@ export default class HolbertonCLass {
   }
 
   get location() {
-   return this._location;
+    return this._location;
   }
 
   // Conversion methods
