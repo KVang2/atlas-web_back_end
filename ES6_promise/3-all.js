@@ -1,8 +1,4 @@
-function getResponseFromAPI() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const response = { message: "Data retrieved"};
-            resolve(responseData);
-        }, 2000);
-        });
-    }
+import { uploadPhoto, createUser } from './utils.js';
+
+export default function handleProfilesSignup() {
+    Promise.all
