@@ -4,7 +4,7 @@ export default function getResponseFromAPI(promise) {
       return { status: 200, body: 'Success' };
     })
 
-    .catch((error) => {
+    .catch(() => {
       return new Error();
     })
 
