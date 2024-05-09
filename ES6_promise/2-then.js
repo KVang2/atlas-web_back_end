@@ -9,6 +9,6 @@ export default function getResponseFromAPI(promise) {
     })
 
     .finally(() => {
-      console.log("Got a response from the API");
-  });
+      console.log('Got a response from the API');
+    });
 }
