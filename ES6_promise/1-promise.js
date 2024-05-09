@@ -1,4 +1,4 @@
-function getResponseFromAPI(url) {
+function getFullResponseFromAPI(url) {
   return new Promise((resolve, reject) => {
     if (success) {
       resolve({ status: 200, body: 'Success'});
