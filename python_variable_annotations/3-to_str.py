@@ -10,7 +10,7 @@ def to_str(n: float) -> str:
 
     Args:
         n (float): number to convert
-    
+
     Returns: str
     """
     return str(n)
