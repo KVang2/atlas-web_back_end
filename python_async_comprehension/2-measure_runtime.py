@@ -8,7 +8,6 @@ import asyncio
 import random
 import time
 from typing import AsyncGenerator, List
-from async_comprehension import async_comprehension
 
 
 async def async_generator() -> AsyncGenerator[float, None]:
