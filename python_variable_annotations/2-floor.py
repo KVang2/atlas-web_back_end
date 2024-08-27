@@ -4,8 +4,8 @@
 type-annotated function floor takes a float as an argument
 """
 
-
 import math
+
 
 def floor(n: float) -> int:
     """
