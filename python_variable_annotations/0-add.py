@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
+
 """
 Script for a function use to add two floating number
 """
-
 def add(a: float, b: float) -> float:
     """
     Adding two float numbers.
