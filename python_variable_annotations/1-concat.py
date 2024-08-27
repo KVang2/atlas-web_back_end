@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Script for a function use to add two floating number
+Script for a function use to add two str
 """
 
 
