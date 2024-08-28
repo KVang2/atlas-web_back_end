@@ -15,6 +15,7 @@ def make_multiplier(multiplier: float) -> Callable[[float], float]:
 
     Returns:
         a function that multiplies a float by multiplier
-        lambda function takes a float and returns it muliplied by the multiplier.
+        lambda function takes a float and returns
+        it muliplied by the multiplier.
     """
     return lambda x: x * multiplier
