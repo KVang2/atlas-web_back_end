@@ -6,8 +6,22 @@ default value and waits for a random delay and returns it
 
 
 import asyncio
+import random
 from typing import List
-from basic_async_syntax import wait_random
+
+
+async def wait_random(max_delay: int = 10) -> float:
+    """
+    waiting for a random delay
+    Args:
+        10 (int):
+
+    Returns:
+        int:
+    """
+    delay = random.uniform(0, max_delay)
+    await asyncio.sleep(0, max_delay)
+    return delay
 
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
