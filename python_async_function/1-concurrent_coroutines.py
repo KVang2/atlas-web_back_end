@@ -7,7 +7,7 @@ default value and waits for a random delay and returns it
 
 import asyncio
 from typing import List
-import wait_random
+from basic_async_syntax import wait_random
 
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
@@ -21,7 +21,7 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     """
 
 
-tasks = [wait_random(max_delay) for i in range(n)]
+tasks = [wait_random(max_delay) for _ in range(n)]
 delays = []
 
 for task in asyncio.as_completed(tasks):
