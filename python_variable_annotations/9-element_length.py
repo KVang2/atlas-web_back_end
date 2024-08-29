@@ -5,10 +5,10 @@ type-annotated function iterable object, annotate function's parameters
 """
 
 
-from typing import List, Tuple, Sequence
+from typing import List, Tuple, Sequence, Iterable, Any
 
 
-def element_length(lst: Sequence[str]) -> List[Tuple[str, int]]:
+def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
     """
     iterable object
     Args:
