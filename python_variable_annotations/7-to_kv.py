@@ -4,6 +4,8 @@
 type-annotated function to_kv takes a string, float or int as arguments and returns tuple
 """
 
+from typing import Union, Tuple
+
 
 def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
     """
