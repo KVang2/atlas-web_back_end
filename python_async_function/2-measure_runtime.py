@@ -6,7 +6,6 @@ max_delay that measures total execution time
 
 
 import asyncio
-import random
 import time
 
 wait_n = __import__('1-concurrent_coroutines').wait_n
