@@ -4,11 +4,6 @@
 from base_caching import BaseCaching
 
 
-class BaseCaching:
-    def __init__(self):
-        """Initiliaze"""
-        self.cache_data = {}
-
 class BasicCache(BaseCaching):
     def put(self, key, item):
         """adding key-value pair"""
