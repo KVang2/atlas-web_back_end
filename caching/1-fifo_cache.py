@@ -3,6 +3,7 @@
 
 from base_caching import BaseCaching
 
+
 class FIFOCache(BaseCaching):
     """
     FIFO caching that inherits from baseCaching
@@ -26,11 +27,11 @@ class FIFOCache(BaseCaching):
         """
         if key is None:
             return
-        
+
         if item is None:
             return
 
-        if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
+        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
             # remove the first key inserted
             oldest_key = self.order.pop(0)
             del self.cache_data[oldest_key]
