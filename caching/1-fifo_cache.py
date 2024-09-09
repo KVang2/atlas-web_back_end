@@ -28,22 +28,17 @@ class FIFOCache(BaseCaching):
         
         if item is None:
             return
-        
-        self.cache_data[key] = item
 
+        self.cache_Data[key] = item
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
             # remove the first key inserted
-            oldest_key = self.order.pop(0)
-            del self.cache_data[oldest_key]
+            oldest_key = next(iter(self.cache_data))
+            self.cache_data[oldest_key]
             print(f"DISCARD: {oldest_key}")
         
         # Adding or updating the cache with new key and item
         self.cache_data[key] = item
 
-        # Maintain order list for Fifo
-        if key not in self.order:
-            self.order.append(key)
-    
     def get(self, key):
         """
         returning value in self.cache_data linked to key
