@@ -34,7 +34,7 @@ class FIFOCache(BaseCaching):
             # remove the first key inserted
             oldest_key = next(iter(self.cache_data))
             self.cache_data[oldest_key]
-            print(f"DISCARD: {oldest_key}")
+            print(f'DISCARD: {oldest_key}')
         
         # Adding or updating the cache with new key and item
         self.cache_data[key] = item
