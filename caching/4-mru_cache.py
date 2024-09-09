@@ -4,9 +4,9 @@
 from base_caching import BaseCaching
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """
-    LURCache
+    MRUCache
     Args:
         BaseCaching
     """
