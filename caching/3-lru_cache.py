@@ -35,7 +35,7 @@ class LRUCache(BaseCaching):
             LRU_key = self.order.pop(0)
             del self.cache_data[LRU_key]
             print(f'DISCARD: {LRU_key}')
-
+    
         self.cache_data[key] = item
 
         if key not in self.order:
