@@ -30,7 +30,6 @@ class FIFOCache(BaseCaching):
         if item is None:
             return
 
-        self.cache_data[key] = item
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
             # remove the first key inserted
             oldest_key = self.order.pop(0)
@@ -39,6 +38,9 @@ class FIFOCache(BaseCaching):
         
         # Adding or updating the cache with new key and item
         self.cache_data[key] = item
+
+        if key not in self.order:
+            self.order.append(key)
 
     def get(self, key):
         """
