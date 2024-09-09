@@ -36,7 +36,7 @@ class FIFOCache(BaseCaching):
             oldest_key = self.order.pop(0)
             del self.cache_data[oldest_key]
             print(f'DISCARD: {oldest_key}')
-        
+
         # Adding or updating the cache with new key and item
         self.cache_data[key] = item
 
