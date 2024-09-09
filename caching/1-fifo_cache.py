@@ -33,7 +33,7 @@ class FIFOCache(BaseCaching):
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
             # remove the first key inserted
             oldest_key = next(iter(self.cache_data))
-            self.cache_data[oldest_key]
+            del self.cache_data[oldest_key]
             print(f'DISCARD: {oldest_key}')
         
         # Adding or updating the cache with new key and item
