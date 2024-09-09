@@ -29,7 +29,7 @@ class FIFOCache(BaseCaching):
         if item is None:
             return
 
-        self.cache_Data[key] = item
+        self.cache_data[key] = item
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
             # remove the first key inserted
             oldest_key = next(iter(self.cache_data))
