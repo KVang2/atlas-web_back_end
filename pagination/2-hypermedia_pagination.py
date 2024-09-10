@@ -47,34 +47,35 @@ class Server:
         return dataset[start:end]
 
 
-def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
-    """
-    Get paginated data
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
+        """
+        Get paginated data
 
-    Args:
-        page (int, optional): _description_. Defaults to 1.
-        page_size (int, optional): _description_. Defaults to 10.
+        Args:
+            page (int, optional): _description_. Defaults to 1.
+            page_size (int, optional): _description_. Defaults to 10.
 
-    Returns:
-        Dict[str, Any]: _description_
-    """
-    data = self.get_page(page, page_size)
-    dataset = self.dataset()
-    total_items = len(dataset)
+        Returns:
+            Dict[str, Any]: _description_
+        """
+        data = self.get_page(page, page_size)
+        dataset = self.dataset()
+        total_items = len(dataset)
 
-    total_pages = (total_items + page_size - 1) // page_size
+        total_pages = (total_items + page_size - 1) // page_size
 
-    return {
-        "page_size": len(data),
-        "page": page,
-        "data": data,
-        "next_page": page + 1
-        if page < total_pages
-        else None,
-        "prev_page": page - 1
-        if page > 1
-        else None,
-    }
+        return {
+            "page_size": len(data),
+            "page": page,
+            "data": data,
+            "next_page": page + 1
+            if page < total_pages
+            else None,
+            "prev_page": page - 1
+            if page > 1
+            else None,
+            "total_pages": total_pages,
+        }
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
