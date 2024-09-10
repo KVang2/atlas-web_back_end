@@ -35,8 +35,8 @@ class Server:
             page_size (_type_): _description_
         """
 
-        assert isinstance(page, int) and page > 0, "page positive int"
-        assert isinstance(page_size, int) and page_size > 0, "page_size positive int"
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
         start, end = index_range(page, page_size)
         dataset = self.dataset()
