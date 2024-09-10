@@ -3,6 +3,7 @@
 simple helper function
 """
 
+
 def index_range(page, page_size):
     """
     Function taking two int arguments
