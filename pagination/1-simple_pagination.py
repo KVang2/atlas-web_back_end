@@ -31,7 +31,7 @@ class Server:
             pass
 
 
-def index_range(page, page_size):
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     Function taking two int arguments
     Args:
