@@ -36,7 +36,7 @@ class Server:
         """
 
         assert isinstance(page, int) and page > 0, "page positive int"
-        assert isinstance(page_size, int) and page_size > 0, "page_size positive int"
+        assert isinstance(page_size, int) and page_size > 0, "page_size pos int"
 
         start, end = index_range(page, page_size)
         dataset = self.dataset()
@@ -45,7 +45,6 @@ class Server:
             return []
 
         return dataset[start:end]
-
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """
