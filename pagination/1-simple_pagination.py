@@ -27,8 +27,25 @@ class Server:
 
         return self.__dataset
 
+
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-            pass
+        """_summary_
+
+        Args:
+            page (_type_): _description_
+            page_size (_type_): _description_
+        """
+
+        assert isinstance(page, int) and page > 0, "page must be positive integer"
+        assert isinstance(page_size, int) and page_size > 0, "page_size must be positive integer"
+
+        start, end = index_range(page, page_size)
+        dataset = self.dataset()
+
+        if start >= len(dataset):
+            return []
+
+        return dataset[start:end]
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -52,23 +69,3 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
     end = start + page_size
 
     return (start, end)
-
-
-def get_page(self, page: int = 1, page_size: int=10) -> List[List]:
-    """_summary_
-
-    Args:
-        page (_type_): _description_
-        page_size (_type_): _description_
-    """
-
-    assert isinstance(page, int) and page > 0, "page must be positive integer"
-    assert isinstance(page_size, int) and page_size > 0, "page_size must be positive integer"
-
-    start, end = index_range(page, page_size)
-    dataset = self.dataset()
-
-    if start >= len(dataset):
-        return []
-
-    return dataset[start:end]
