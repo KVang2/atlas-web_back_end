@@ -5,7 +5,7 @@ simple helper function
 
 import csv
 import math
-from typing import List
+from typing import List, Tuple
 
 
 class Server:
