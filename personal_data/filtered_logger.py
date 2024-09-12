@@ -8,7 +8,9 @@ from typing import List
 import logging
 import re
 
-def filter_datum(fields: List[str], redaction: str, message: str, separator: str) -> str:
+
+def filter_datum(fields: List[str], redaction: str,
+                 message: str, separator: str) -> str:
     """
     Args:
         fields (List[str]): _description_
@@ -19,6 +21,7 @@ def filter_datum(fields: List[str], redaction: str, message: str, separator: str
     Returns:
         str: _description_
     """
-    pattern = '|'.join([rf'({field}=[^{separator}]+)' for field in fields])
+    pattern = '|'.join([rf'({field}=[^{separator}]+)'
+                        for field in fields])
 
     return re.sub(pattern, lambda match: f"{match.group(0).split('=')[0]}={redaction}", message)
