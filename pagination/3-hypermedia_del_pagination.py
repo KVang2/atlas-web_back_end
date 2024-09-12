@@ -51,16 +51,19 @@ class Server:
         assert isinstance(index, int) and index >= 0
         assert isinstance(page_size, int) and page_size > 0
 
+        # grab indexed dataset
         indexed_data = self.indexed_dataset()
 
         data = []
         next_index = index
 
+        # collecting page_size valid rows, skipping missing rows
         while len(data) < page_size and next_index < len(indexed_data):
             if next_index in indexed_data:
                 data.append(indexed_data[next_index])
             next_index += 1
 
+        # Return the pagination result
         return {
             "index": index,
             "next_index": next_index,
