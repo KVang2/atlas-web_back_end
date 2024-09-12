@@ -35,5 +35,4 @@ def filter_datum(fields: List[str], redaction: str, message: str, separator: str
         str: _description_
     """
     pattern = '|'.join([rf'({field}=[^{separator}]+)' for field in fields])
-    redacted_message = re.sub(pattern, lambda match: f"{match.group(1).split('=')[0]}={redaction}", message)
-    return redacted_message
+    return re.sub(pattern, lambda match: f"{match.group(0).split('=')[0]}={redaction}", message)
