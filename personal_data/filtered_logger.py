@@ -60,3 +60,23 @@ def filter_datum(fields: List[str], redaction: str,
     # replace sensitive data with redaction string
     return re.sub(pattern, lambda match:
                   f"{match.group(0).split('=')[0]}={redaction}", message)
+
+def get_logger() -> logging.Logger:
+    """
+    taking no agrument
+    Returns:
+        logger
+    """
+    logger = logging.getLogger("user_data")
+
+    logger.setLevel(logging.INFO)
+
+    logger.propagate = False
+
+    stream_handler = logging.StreamHandler()
+    formatter = RedactingFormatter(PII_Fields)
+    stream_handler.setFormatter(formatter)
+
+    logger.addHandler(stream_handler)
+
+    return logger
