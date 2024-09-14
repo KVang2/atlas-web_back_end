@@ -28,7 +28,8 @@ class RedactingFormatter(logging.Formatter):
         """
         format method to filter values in incoming log records
         Args:
-            record (logging.LogRecord): using filter_datum values for fields in fields
+            record (logging.LogRecord): using filter_datum
+            values for fields in fields
         Returns:
             str:
         """
@@ -41,10 +42,13 @@ def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
     """
     Args:
-        fields (List[str]): list of strings representing all fields to obfuscate
-        redaction (str): str representing what field will be obfuscated
+        fields (List[str]): list of strings representing
+        all fields to obfuscate
+        redaction (str): str representing
+        what field will be obfuscated
         message (str): str representing log line
-        separator (str): str representing by which character is separating all fields in the log line
+        separator (str): str representing by which
+        character is separating all fields in the log line
 
     Returns:
         str: redacted log message
