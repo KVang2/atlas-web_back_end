@@ -63,6 +63,7 @@ def filter_datum(fields: List[str], redaction: str,
     return re.sub(pattern, lambda match:
                   f"{match.group(0).split('=')[0]}={redaction}", message)
 
+
 def get_logger() -> logging.Logger:
     """
     taking no agrument
