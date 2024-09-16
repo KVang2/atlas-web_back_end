@@ -40,4 +40,4 @@ def is_valid(hashed_password: bytes, password: str) -> bool:
     """
     pass_bytes = password.encode('utf-8')
 
-    return bcrypt.checkpw(pass_bytes, hash_password)
+    return bcrypt.checkpw(pass_bytes, hashed_password)
