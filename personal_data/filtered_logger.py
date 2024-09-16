@@ -4,9 +4,12 @@ Regexing
 """
 
 
+from mysql.connector import connect, MySQLConnection
 from typing import List
 import logging
 import re
+import datetime
+
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
@@ -83,3 +86,6 @@ def get_logger() -> logging.Logger:
     logger.addHandler(stream_handler)
 
     return logger
+
+
+def get_db() -> MySQLConnection:
