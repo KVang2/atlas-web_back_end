@@ -43,7 +43,8 @@ class BasicAuth(Auth):
         return authorization_header[len("Basic "):]
 
 
-    def decode_base64_authorization_header(self, base64_authorization_header: str) -> str:
+    def decode_base64_authorization_header(
+            self, base64_authorization_header: str) -> str:
         """
         method that returns decoded value of a Base64 str
         Args:
@@ -61,7 +62,8 @@ class BasicAuth(Auth):
             return None
         
         try:
-            base_auth = base64.b64decode(base64_part, validate=True)
+            base_auth = base64.b64decode(base64_authorization_header,
+                                        validate=True)
             return base_auth.decode('utf-8')
         except (binascii.Error, ValueError, UnicodeDecodeError):
             return None
