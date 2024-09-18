@@ -27,7 +27,7 @@ class Auth:
             return True
 
         if excluded_paths is None:
-            return true
+            return True
 
         if path is excluded_paths:
             return False
@@ -40,6 +40,7 @@ class Auth:
         for excluded_path in excluded_paths:
             if excluded_path[-1] != '/':
                 excluded_path += '/'
+
             if path == excluded_path:
                 return False
 
