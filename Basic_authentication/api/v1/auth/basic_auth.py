@@ -3,7 +3,7 @@
 BasicAuth inherits from Auth
 """
 
-from api.vi.auth.auth import Auth
+from api.v1.auth.auth import Auth
 
 
 class BasicAuth(Auth):
