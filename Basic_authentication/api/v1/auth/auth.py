@@ -25,23 +25,23 @@ class Auth:
         """
         return False
 
-def authorization_header(self, request=None) -> str:
-    """
-    Public method that returns none
-    Args:
-        request (_type_, optional): Flask request object
+    def authorization_header(self, request=None) -> str:
+        """
+        Public method that returns none
+        Args:
+            request (_type_, optional): Flask request object
 
-    Returns:
-        str: none
-    """
-    return None
+        Returns:
+            str: none
+        """
+        return None
 
-def current_user(self, request=None) -> User:
-    """
-    Publice method that returns current user, returning none for now
-    Args:
-        request: Flask request object
-    Returns:
-        User: none
-    """
-    return None
+    def current_user(self, request=None) -> User:
+        """
+        Public method that returns current user, returning none for now
+        Args:
+            request: Flask request object
+        Returns:
+            User: none
+        """
+        return None
