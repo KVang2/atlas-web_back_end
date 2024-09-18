@@ -46,7 +46,6 @@ class Auth:
 
         return True
 
-
     def authorization_header(self, request=None) -> str:
         """
         Public method that returns none
