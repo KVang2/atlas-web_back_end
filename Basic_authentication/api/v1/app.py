@@ -25,9 +25,38 @@ else:
     auth = BasicAuth()
 
 
+@app.before_request
+def before_request():
+    """Flask method before request"""
+    if auth is None:
+        # if no auth is provided do nothing
+        return
+
+    # list of paths that doesn;t require authentication
+    excluded_paths = [
+        '/api/v1/status/',
+        'api/v1/unauthorized/',
+        '/api/v1/forbidden/'
+    ]
+
+    # use require_auth to check if path requires authentication
+    if not auth.require_auth(request.path, excluded_paths):
+        # if path doesn't, do nothing
+        return
+
+    # IF AUTHORIZATION HEADER IS MISSING, RAISE 401 ERROR
+    if auth.authorization_header(request) is None:
+        abort(401)
+
+    # IF CURRENT USER NOT FOUND, RAISE 403 ERROR
+    if auth.current_user(request) is None:
+        abort(403)
+
+
 @app.errorhandler(404)
 def not_found(error) -> str:
-    """ Not found handler
+    """
+    Not found handler
     """
     return jsonify({"error": "Not found"}), 404
 
