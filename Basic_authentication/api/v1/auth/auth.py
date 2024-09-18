@@ -5,6 +5,9 @@ Auth class
 from flask import request
 from typing import List, TypeVar
 
+# defining generic type for current user
+User = TypeVar('User')
+
 
 class Auth:
     """
@@ -33,7 +36,7 @@ def authorization_header(self, request=None) -> str:
     """
     return None
 
-def current_user(self, request=None) -> TypeVar('User'):
+def current_user(self, request=None) -> User:
     """
     Publice method that returns current user, returning none for now
     Args:
