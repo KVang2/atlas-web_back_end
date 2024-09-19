@@ -109,11 +109,12 @@ class BasicAuth(Auth):
         try:
             user = User.search({'email': user_email})
         except Exception as error:
+            print(f"Error: {error}")
             return None
 
         if user is None:
             return None
-        
+
         if not user.is_valid_password(user_pwd):
             return None
 
