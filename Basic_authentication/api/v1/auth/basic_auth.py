@@ -123,8 +123,4 @@ class BasicAuth(Auth):
         if pw is None:
             return None
 
-        if user and pw(User.search, User.is_valid_password):
-            return user
-        else:
-            return None
-
+        return user
