@@ -115,10 +115,12 @@ class BasicAuth(Auth):
         if user is None:
             return None
 
-        if user_pwd is None:
+        try:
+            pw = User.is_valid_password({'pass': user_pwd})
+        except Exception as error:
             return None
 
-        if not User.is_valid_password(user_pwd):
+        if pw is None:
             return None
 
         return user
