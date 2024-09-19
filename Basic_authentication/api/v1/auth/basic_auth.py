@@ -6,6 +6,7 @@ BasicAuth inherits from Auth
 import re
 import base64
 import binascii
+from models.user import User
 from api.v1.auth.auth import Auth
 from typing import TypeVar, Tuple
 
@@ -109,7 +110,6 @@ class BasicAuth(Auth):
         try:
             user = User.search({'email': user_email})
         except Exception as error:
-            print(f"Error: {error}")
             return None
 
         if user is None:
