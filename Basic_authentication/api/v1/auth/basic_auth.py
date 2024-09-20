@@ -9,7 +9,6 @@ import binascii
 from models.user import User
 from api.v1.auth.auth import Auth
 from typing import TypeVar, Tuple
-from werkzeug.security import check_password_hash
 
 
 class BasicAuth(Auth):
@@ -123,8 +122,5 @@ class BasicAuth(Auth):
 
         if pw is None:
             return None
-        
-        for user in User:
-            if check_password_hash(user.hashed_password, user_pwd):
 
         return user
