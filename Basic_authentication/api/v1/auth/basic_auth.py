@@ -110,7 +110,7 @@ class BasicAuth(Auth):
         try:
             users = User.search({'email': user_email})
 
-            if len(users) == 0:
+            if not users:
                 return None
 
             for user in users:
