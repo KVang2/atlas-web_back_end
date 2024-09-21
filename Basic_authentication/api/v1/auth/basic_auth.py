@@ -3,6 +3,7 @@
 BasicAuth inherits from Auth
 """
 
+import re
 import base64
 import binascii
 from models.user import User
