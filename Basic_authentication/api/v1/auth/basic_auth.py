@@ -3,7 +3,6 @@
 BasicAuth inherits from Auth
 """
 
-import re
 import base64
 import binascii
 from models.user import User
@@ -119,3 +118,31 @@ class BasicAuth(Auth):
 
         except Exception as error:
             return None
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """
+        Overload Auth and retrieves user instance
+        """
+        # Extract Authorization header from request
+        authorization_header = self.authorization_header(request)
+        if authorization_header is None:
+            return None
+
+        # Extract Base64 part of header
+        base64_header = self.extrract_base64_authorization_header(authorization_header)
+        if base64_header is None:
+            return None
+
+        # Decode Base64 part getting email and password
+        decoded_header = self.decode_base64_authorization_header(base64_header)
+        if decoded_header is None:
+            return None
+
+        # Extracting user email and password from decoded header
+        user_email, user_pwd = self.extract_user_credentials(decoded_header)
+        if user_email is None or user_pwd is None:
+            return None
+
+        # return user object base on email and password
+        return self.user_object_from_credentials(user_email, user_pwd)
+    
