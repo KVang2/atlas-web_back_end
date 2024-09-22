@@ -24,7 +24,7 @@ class SessionAuth(Auth):
             user_id (str, optional): checking if it is None or not a string
 
         Returns:
-            None
+            None, session_id
         """
         # Check if user_id is none
         if user_id is None:
@@ -40,3 +40,25 @@ class SessionAuth(Auth):
         self.user_id_by_session_id[session_id] = user_id
 
         return session_id
+
+    def user_id_for_session_id(
+            self, session_id: str = None) -> str:
+        """
+        instance method that returns user ID based on session ID
+        Args:
+            session_id (str, optional): _description_. Defaults to None.
+
+        Returns:
+            None, session_id
+        """
+        # check if session_id is none
+        if session_id is None:
+            return None
+
+        # check if session_id is not str
+        if not isinstance(session_id, str):
+            return None
+
+        # using .get() to access user_id from the session_id
+        return self.user_id_by_session_id.get(session_id)
+    
