@@ -4,6 +4,7 @@ Auth class
 """
 from flask import request
 from typing import List, TypeVar
+import os
 
 # defining generic type for current user
 User = TypeVar('User')
@@ -71,3 +72,19 @@ class Auth:
             User: none
         """
         return None
+
+    def session_cookie(self, request=None):
+        """
+        returns cookie value from a request
+        Args:
+            request (_type_, optional): _description_. Defaults to None.
+        """
+        # return none if request is none
+        if request is None:
+            return None
+
+        # Get cookie name from environment var session
+        session_name = os.getenv('SESSION_NAME', 'my_session_id')
+
+        # Get session ID from cookie
+        return request.cookies.get('session_name')
