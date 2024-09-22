@@ -6,7 +6,7 @@ from flask import abort, jsonify, request
 from models.user import User
 
 
-@app_views.route('/api/v!/users/<user_id>', methods=['GET'], strict_slashes=False)
+@app_views.route('/api/v1/users/<user_id>', methods=['GET'], strict_slashes=False)
 def get_user(user_id):
     """
     Args:
