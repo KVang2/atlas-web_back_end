@@ -87,4 +87,4 @@ class Auth:
         session_name = os.getenv('SESSION_NAME', 'my_session_id')
 
         # Get session ID from cookie
-        return request.cookies.get('session_name')
+        return request.cookies.get(session_name)
