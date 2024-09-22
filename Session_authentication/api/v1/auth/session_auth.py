@@ -61,4 +61,3 @@ class SessionAuth(Auth):
 
         # using .get() to access user_id from the session_id
         return self.user_id_by_session_id.get(session_id)
-    
