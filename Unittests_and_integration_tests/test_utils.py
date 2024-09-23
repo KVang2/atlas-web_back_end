@@ -10,9 +10,7 @@ from utils import access_nested_map
 
 class TestAccessNestedMap(unittest.TestCase):
     """
-
-    Args:
-        unittest (_type_): _description_
+    Unit tests for access_nested_map function
     """
 
     @parameterized.expand([
@@ -20,7 +18,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
-    def test_access_nested_map(self, name, nested_map, path, expected):
+    def test_access_nested_map(self, nested_map, path, expected):
         """
         Method to test that it returns what its suppose to
         """
