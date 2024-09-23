@@ -4,6 +4,7 @@ class session Auth inherits from Auth
 """
 
 from api.v1.auth.auth import Auth
+from models.user import User
 import uuid
 
 
@@ -61,3 +62,22 @@ class SessionAuth(Auth):
 
         # using .get() to access user_id from the session_id
         return self.user_id_by_session_id.get(session_id)
+
+    def current_user(self, request=None):
+        """
+        returns user instance based on cookie value
+        Args:
+            request (_type_, optional):
+        """
+        # getting ID from the cookie
+        session_id = self.session_cookie(request)
+        if session_id is None:
+            return None
+
+        # retrieve user_id with given session_id from user_id
+        user_id = self.user_id_for_session_id(session_id)
+        if user_id is None:
+            return None
+
+        # Retrieve user instance
+        return User.get(user_id)
