@@ -39,7 +39,8 @@ def before_request():
     excluded_paths = [
         '/api/v1/status/',
         'api/v1/unauthorized/',
-        '/api/v1/forbidden/'
+        '/api/v1/forbidden/',
+        '/api/v1/auth_session/login/'
     ]
 
     # use require_auth to check if path requires authentication
@@ -47,8 +48,8 @@ def before_request():
         # if path doesn't, do nothing
         return
 
-    # IF AUTHORIZATION HEADER IS MISSING, RAISE 401 ERROR
-    if auth.authorization_header(request) is None:
+    # IF AUTHORIZATION HEADER IS MISSING and session cookie, RAISE 401 ERROR
+    if auth.authorization_header(request) is None and auth.session_cookie(request) is None:
         abort(401)
 
     # assign authenticated user to request.current_user
