@@ -11,13 +11,16 @@ Base = declarative_base()
 
 
 class User(Base):
+    """
+    User class model for users table
+    """
 
     # Table name
     __tablename__ = 'users'
 
     # Columns
     id = Column(Integer, primary_key=True, autoincrement=True)
-    email = Column(String(255), nullable=False, unique=True)
-    hashed_password = Column(String(255), nullable=False)
-    session_id = Column(String(255), nullable=True)
-    reset_token = Column(String(255), nullable=False)
+    email = Column(String(250), nullable=False, unique=True)
+    hashed_password = Column(String(250), nullable=False)
+    session_id = Column(String(250), nullable=True)
+    reset_token = Column(String(250), nullable=False)
