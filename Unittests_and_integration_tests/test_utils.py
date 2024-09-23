@@ -24,10 +24,8 @@ class TestAccessNestedMap(unittest.TestCase):
         """
         Method to test that it returns what its suppose to
         """
-        # call access_nested_map function
-        result = access_nested_map(nested_map, path)
         # check result matches expected value
-        self.assertEqual(result, expected)
+        self.assertEqual(access_nested_map(nested_map, path), expected)
 
 if __name__ == '__main__':
     unittest.main()
