@@ -5,7 +5,7 @@ parameterize a unit test, writing the first unit test for utils.access_nested_ma
 
 import unittest
 from parameterized import parameterized
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 from unittest.mock import Mock, patch
 
 
@@ -68,6 +68,55 @@ class TestGetJson(unittest.TestCase):
 
             # Check results matches test payload
             self.assertEqual(result, test_payload)
+
+class TestMomize(unittest.TestCase):
+    """
+    implement Testmemoise class with test_memoize method
+    """
+
+    def test_memoize(self):
+        """
+        using mock.patch to mock method,
+        test a_property when called twice correct result is return
+        a_method called once using assert_called_once
+        """
+        class TestClass:
+            """
+            def a_method(self):
+                return: 42
+            def a_property(self):
+                return self.a_method()
+            """
+
+            def a_method(self):
+                """
+                mock a_method to track calls
+                """
+                return 42
+
+            @memoize
+            def a_property(self):
+                """
+                all a_property of Testclass twice,
+                compute result by calling a_mthod.
+                Returns:
+                    cached result
+                """
+                return self.a_method()
+
+        test_instance = TestClass()
+
+        with patch('TestClass.a_method') as mock_a_method:
+            # access a_property twice
+            access1 = test_instance.a_property
+            access2 = test_instance.a_property
+
+            # Check return values are correct
+            self.assertEqual(access1, 42)
+            self.assertEqual(access2, 42)
+
+            # Make sure a_method was called once
+            mock_a_method.assert_called_once()
 
 if __name__ == '__main__':
     unittest.main()
