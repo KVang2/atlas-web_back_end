@@ -108,7 +108,7 @@ class TestMemoize(unittest.TestCase):
         test_instance = TestClass()
 
         with patch.object(
-            TestClass, 'a_method', return_value=42) as mock_a_method:
+                TestClass, 'a_method', return_value=42) as mock_a_method:
             # access a_property twice
             access1 = test_instance.a_property
             access2 = test_instance.a_property
