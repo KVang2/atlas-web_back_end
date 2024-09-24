@@ -106,7 +106,7 @@ class TestMemize(unittest.TestCase):
 
         test_instance = TestClass()
 
-        with patch(TestClass,
+        with patch.object(TestClass,
                    'a_method', return_value=42) as mock_a_method:
             # access a_property twice
             access1 = test_instance.a_property
