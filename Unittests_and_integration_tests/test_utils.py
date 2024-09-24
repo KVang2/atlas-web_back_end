@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-parameterize a unit test, writing the first unit test for utils.access_nested_map
+parameterize a unit test,
+writing the first unit test for utils.access_nested_map
 """
 
 import unittest
@@ -30,13 +31,13 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",)),
         ({"a": 1}, ("a", "b"))
     ])
-
     def test_access_nested_map_exception(self, nested_map, path):
         """
         Parameterize unit test, use assertRaise
         """
         with self.assertRaises(KeyError):
             access_nested_map(nested_map, path)
+
 
 class TestGetJson(unittest.TestCase):
     """
@@ -48,7 +49,6 @@ class TestGetJson(unittest.TestCase):
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
     ])
-
     def test_get_json(self, test_url, test_payload):
         """
         testing utils.get json
@@ -68,6 +68,7 @@ class TestGetJson(unittest.TestCase):
 
             # Check results matches test payload
             self.assertEqual(result, test_payload)
+
 
 class TestMemoize(unittest.TestCase):
     """
@@ -106,8 +107,8 @@ class TestMemoize(unittest.TestCase):
 
         test_instance = TestClass()
 
-        with patch.object(TestClass,
-                   'a_method', return_value=42) as mock_a_method:
+        with patch.object(
+            TestClass, 'a_method', return_value=42) as mock_a_method:
             # access a_property twice
             access1 = test_instance.a_property
             access2 = test_instance.a_property
