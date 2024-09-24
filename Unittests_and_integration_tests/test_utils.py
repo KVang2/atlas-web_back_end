@@ -106,7 +106,8 @@ class TestMomize(unittest.TestCase):
 
         test_instance = TestClass()
 
-        with patch('TestClass.a_method') as mock_a_method:
+        with patch(test_instance,
+                   'a_method', return_value=42) as mock_a_method:
             # access a_property twice
             access1 = test_instance.a_property
             access2 = test_instance.a_property
@@ -117,6 +118,7 @@ class TestMomize(unittest.TestCase):
 
             # Make sure a_method was called once
             mock_a_method.assert_called_once()
+
 
 if __name__ == '__main__':
     unittest.main()
