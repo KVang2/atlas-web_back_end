@@ -5,7 +5,8 @@ parameterize a unit test, writing the first unit test for utils.access_nested_ma
 
 import unittest
 from parameterized import parameterized
-from utils import access_nested_map
+from utils import access_nested_map, get_json
+from unittest.mock import Mock, patch
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -36,6 +37,35 @@ class TestAccessNestedMap(unittest.TestCase):
         """
         with self.assertRaises(KeyError):
             access_nested_map(nested_map, path)
+
+class TestGetJson(unittest.TestCase):
+    """
+    Class, implement testgetjson method to test utils.get_json
+    return: expected result
+    """
+    @patch('utils.requests.get') # patch requests.get to mock HTTP
+    @parameterized.expand([
+        ("http:")
+    ])
+    def test_get_json(self, mock_get, test_url, test_playload):
+        """
+        testing utils.get json
+        """
+        # create mock object
+        mock_obj = Mock()
+        mock_obj.json.return_value = test_playload
+
+        mock_get.return_value = mock_obj
+
+        # call get_json
+        result = get_json(test_url)
+
+        # Ensure requests.get was called
+        mock_get.assert_called_once_with(test_url)
+
+        # Check results matches test payload
+        self.assertEqual(result, test_payload)
+
 
 if __name__ == '__main__':
     unittest.main()
