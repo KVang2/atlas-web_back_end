@@ -43,7 +43,7 @@ class TestGetJson(unittest.TestCase):
     Class, implement testgetjson method to test utils.get_json
     return: expected result
     """
-    @patch('utils.requests.get') # patch requests.get to mock HTTP
+
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
@@ -53,21 +53,21 @@ class TestGetJson(unittest.TestCase):
         """
         testing utils.get json
         """
-        # create mock object
-        mock_obj = Mock()
-        mock_obj.json.return_value = test_payload
+        with patch('utils.requests.get') as mock_get:
+            # create mock object
+            mock_obj = Mock()
+            mock_obj.json.return_value = test_payload
 
-        mock_get.return_value = mock_obj
+            mock_get.return_value = mock_obj
 
-        # call get_json
-        result = get_json(test_url)
+            # call get_json
+            result = get_json(test_url)
 
-        # Ensure requests.get was called
-        mock_get.assert_called_once_with(test_url)
+            # Ensure requests.get was called
+            mock_get.assert_called_once_with(test_url)
 
-        # Check results matches test payload
-        self.assertEqual(result, test_payload)
-
+            # Check results matches test payload
+            self.assertEqual(result, test_payload)
 
 if __name__ == '__main__':
     unittest.main()
