@@ -69,7 +69,7 @@ class TestGetJson(unittest.TestCase):
             # Check results matches test payload
             self.assertEqual(result, test_payload)
 
-class TestMemize(unittest.TestCase):
+class TestMemoize(unittest.TestCase):
     """
     implement Testmemoise class with test_memoize method
     """
