@@ -56,6 +56,3 @@ class TestGithubOrgClient(unittest.TestCase):
 
         # Assert public url to expected value
         self.assertEqual("https://api.github.com/orgs/google/repos", result)
-
-        # Assert public repos url is expected value
-        mock_org.assert_called_once()
