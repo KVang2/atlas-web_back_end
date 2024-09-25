@@ -6,7 +6,7 @@ implement test_org, test GithubOrgClient.org
 """
 
 import unittest
-from unittest.mock import patch
+from unittest.mock import PropertyMock, patch
 from parameterized import parameterized
 from client import GithubOrgClient
 
@@ -37,7 +37,7 @@ class TestGithubOrgClient(unittest.TestCase):
 
         mock_get_json.assert_called_once_with(f'https://api.github.com/orgs/{org_name}')
 
-    @patch('GithubOrgClient.org')
+    @patch('GithubOrgClient.org', new_callable=PropertyMock)
     def test_public_repos_url(self, mock):
         """
         Test property return
@@ -52,7 +52,7 @@ class TestGithubOrgClient(unittest.TestCase):
         client = GithubOrgClient("google")
 
         # access public repos url property
-        result = client._public_respos_url
+        result = client._public_repos_url
 
         # Assert public url to expected value
         self.assertEqual(result, "https://api.github.com/orgs/google/repos")
