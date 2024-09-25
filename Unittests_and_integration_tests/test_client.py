@@ -37,7 +37,7 @@ class TestGithubOrgClient(unittest.TestCase):
 
         mock_get_json.assert_called_once_with(f'https://api.github.com/orgs/{org_name}')
 
-    @patch('GithubOrgClient.org', new_callable=PropertyMock)
+    @patch('client.GithubOrgClient.org', new_callable=PropertyMock)
     def test_public_repos_url(self, mock):
         """
         Test property return
