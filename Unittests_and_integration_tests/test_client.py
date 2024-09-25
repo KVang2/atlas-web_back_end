@@ -42,7 +42,7 @@ class TestGithubOrgClient(unittest.TestCase):
         client = GithubOrgClient(org_name)
 
         # call org method
-        result = client.org()
+        result = client.org
 
         # check get_json was called correct
         mock_get_json.assert_called_once_with(
