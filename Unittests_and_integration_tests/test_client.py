@@ -6,7 +6,7 @@ implement test_org, test GithubOrgClient.org
 """
 
 import unittest
-from unittest.mock import patch, Mock
+from unittest.mock import patch
 from parameterized import parameterized
 from client import GithubOrgClient
 
@@ -19,7 +19,6 @@ class TestGithubOrgClient(unittest.TestCase):
     @parameterized.exand, parametrize test with org examples,
     to pass GithubOrgClient
     """
-
     @parameterized.expand([
         ("google",),
         ("abc",)
@@ -34,6 +33,6 @@ class TestGithubOrgClient(unittest.TestCase):
         client = GithubOrgClient(org_name)
 
         # call org method
-        client.org()
+        client.org
 
         mock_get_json.assert_called_once_with(f'https://api.github.com/orgs/{org_name}')
