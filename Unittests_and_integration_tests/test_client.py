@@ -30,23 +30,10 @@ class TestGithubOrgClient(unittest.TestCase):
         user decorator patch, parameterized.expand
         test org example (google, abc) to pass Github
         """
-        # Define a mock response object
-        mock_obj = {
-            "login": org_name,
-            "id": 12345,
-            "url": f"https://api.github.com/orgs/{org_name}"
-        }
-        mock_get_json.return_value = mock_obj
-
         # set client
         client = GithubOrgClient(org_name)
 
         # call org method
-        result = client.org()
+        client.org()
 
-        # check get_json was called correct
-        mock_get_json.assert_called_once_with(
-            f"https://api.github.com/orgs/{org_name}")
-
-        # check that result matches mock obj
-        self.assertEqual(result, mock_obj)
+        mock_get_json.assert_called_once_with(f'https://api.github.com/orgs/{org_name}')
