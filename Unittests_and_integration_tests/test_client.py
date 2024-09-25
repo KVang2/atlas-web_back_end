@@ -51,8 +51,11 @@ class TestGithubOrgClient(unittest.TestCase):
         # create instance of GithubOrgCLient
         client = GithubOrgClient("google")
 
-        # access publci repos url property
-        result = client._public_respo_url
+        # access public repos url property
+        result = client._public_respos_url
+
+        # Assert public url to expected value
+        self.assertEqual(result, "https://api.github.com/orgs/google/repos")
 
         # Assert public repos url is expected value
         mock.assert_called_once()
