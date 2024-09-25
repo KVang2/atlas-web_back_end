@@ -36,3 +36,23 @@ class TestGithubOrgClient(unittest.TestCase):
         client.org
 
         mock_get_json.assert_called_once_with(f'https://api.github.com/orgs/{org_name}')
+
+    @patch('GithubOrgClient.org')
+    def test_public_repos_url(self, mock):
+        """
+        Test property return
+            mock
+        """
+        # Mock return value for org
+        mock.return_value = {
+            "repos_url": "https://api.github.com/orgs/google/repos"
+        }
+
+        # create instance of GithubOrgCLient
+        client = GithubOrgClient("google")
+
+        # access publci repos url property
+        result = client._public_respo_url
+
+        # Assert public repos url is expected value
+        mock.assert_called_once()
