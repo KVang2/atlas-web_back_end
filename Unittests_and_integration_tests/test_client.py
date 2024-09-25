@@ -57,3 +57,5 @@ class TestGithubOrgClient(unittest.TestCase):
 
         # Assert public repos url is expected value
         mock_org.assert_called_once()
+
+    def test_public_repos(self,)
