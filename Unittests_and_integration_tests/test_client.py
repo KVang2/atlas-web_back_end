@@ -39,7 +39,7 @@ class TestGithubOrgClient(unittest.TestCase):
         mock_get_json.return_value = mock_obj
 
         # set client
-        client = GithubOrgClient("org_name")
+        client = GithubOrgClient(org_name)
 
         # call org method
         result = client.org()
