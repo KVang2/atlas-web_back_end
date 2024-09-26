@@ -20,8 +20,8 @@ class TestGithubOrgClient(unittest.TestCase):
     to pass GithubOrgClient
     """
     @parameterized.expand([
-        ("google",),
-        ("abc",)
+        ("google"),
+        ("abc"),
     ])
     @patch('client.get_json')
     def test_org(self, org_name, mock_get_json):
@@ -33,8 +33,8 @@ class TestGithubOrgClient(unittest.TestCase):
         client = GithubOrgClient(org_name)
         # call org method
         client.org
-        mock_get_json.assert_called_once_with(f'https://api.github.com/orgs/{org_name}')
-        
+        mock_get_json.assert_called_once_with(
+            f'https://api.github.com/orgs/{org_name}')
 
     @patch('client.GithubOrgClient.org', new_callable=PropertyMock)
     def test_public_repos_url(self, mock_org):
