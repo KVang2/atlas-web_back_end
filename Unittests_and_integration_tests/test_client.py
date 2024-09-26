@@ -6,9 +6,9 @@ implement test_org, test GithubOrgClient.org
 """
 
 import unittest
-from unittest.mock import PropertyMock, patch
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
+from unittest.mock import patch, PropertyMock
 
 
 class TestGithubOrgClient(unittest.TestCase):
