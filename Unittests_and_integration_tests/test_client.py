@@ -6,9 +6,9 @@ implement test_org, test GithubOrgClient.org
 """
 
 import unittest
-from parameterized import parameterized, parameterized_class
+from unittest.mock import PropertyMock, patch
+from parameterized import parameterized
 from client import GithubOrgClient
-from unittest.mock import patch, PropertyMock
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -19,6 +19,7 @@ class TestGithubOrgClient(unittest.TestCase):
     @parameterized.exand, parametrize test with org examples,
     to pass GithubOrgClient
     """
+
     @parameterized.expand([
         ("google"),
         ("abc"),
@@ -33,17 +34,32 @@ class TestGithubOrgClient(unittest.TestCase):
         client = GithubOrgClient(org_name)
         # call org method
         client.org
+
         mock_get_json.assert_called_once_with(
             f'https://api.github.com/orgs/{org_name}')
 
-    @patch('client.GithubOrgClient.org', new_callable=PropertyMock)
-    def test_public_repos_url(self, mockOrg):
-        """Testing githubOrgClient._public_repos_url"""
-        mockOrg.return_value = {'repos_url':
-                                'https://api.github.com/orgs/google/repos'}
-        githubOrg = GithubOrgClient('google')
-        result = githubOrg._public_repos_url
-        self.assertEqual('https://api.github.com/orgs/google/repos', result)
+    def test_public_repos_url(self):
+        """
+        Test that _public_repos_url returns the correct URL based on the mocked org property.
+        """
+        # Known payload that will be returned by the mocked 'org' property
+        mock_org_payload = {
+            "repos_url": "https://api.github.com/orgs/google/repos"
+        }
+
+        # Use patch as a context manager to mock 'GithubOrgClient.org' with PropertyMock
+        with patch('client.GithubOrgClient.org', new_callable=PropertyMock) as mock_org:
+            # Set the return value for the 'org' property
+            mock_org.return_value = mock_org_payload
+
+            # Create an instance of GithubOrgClient
+            client = GithubOrgClient("google")
+
+            # Access the _public_repos_url property
+            result = client._public_repos_url
+
+            # Check that the _public_repos_url returns the expected URL from the mocked org property
+            self.assertEqual(result, "https://api.github.com/orgs/google/repos")
 
     @patch('client.get_json')
     def test_public_repos(self, mock_get_json):
