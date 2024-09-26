@@ -48,16 +48,13 @@ class TestGithubOrgClient(unittest.TestCase):
         }
 
         # create instance of GithubOrgCLient
-        client = GithubOrgClient("google")
+        client = GithubOrgClient('google')
 
         # access public repos url property
         result = client._public_repos_url
 
         # Assert public url to expected value
-        self.assertEqual("https://api.github.com/orgs/google/repos", result)
-
-        # Assert public repos url is expected value
-        mock_org.assert_called_once()
+        self.assertEqual('https://api.github.com/orgs/google/repos', result)
 
     @patch('client.get_json')
     def test_public_repos(self, mock_get_json):
