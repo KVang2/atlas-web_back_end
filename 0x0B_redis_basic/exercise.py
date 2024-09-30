@@ -26,5 +26,5 @@ class Cache:
         generate random key using uuid
         """
         r_key = str(uuid.uuid4())
-        self._redis.set(r.key, data)
+        self._redis.set(r_key, data)
         return r_key
