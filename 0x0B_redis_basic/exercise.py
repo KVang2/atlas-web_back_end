@@ -46,6 +46,7 @@ class Cache:
         # flush redis database to start fresh
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         takes data arg and returns string
