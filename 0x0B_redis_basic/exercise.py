@@ -46,3 +46,16 @@ class Cache:
             return fn(data)
 
         return data
+
+    def get_str(self, key: str) -> Union[str, None]:
+        """
+        get str, parametrize Cache.get
+        """
+        return self.get(key, lambda x: x.decode('utf-8'))
+
+    def get_int(self, key: str) -> Union[int, None]:
+        """
+        get str, parametrize Cache.get
+        with correct conversion function
+        """
+        return self.get(key, lambda x: int(x))
