@@ -9,6 +9,32 @@ from typing import Union, Callable
 from functools import wraps
 
 
+def call_history(method: Callable) -> Callable:
+    """
+    single parameter named method,
+    callable and returns a callable
+    """
+
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """
+        wrapper function
+        """
+        key = method.__qualname__
+
+        input_key = f"{key}:inputs"
+        output_key = f"{key}:outputs"
+
+        self._redis.rpush(input_key, str(args))
+
+        output = method(self, *args, **kwargs)
+
+        self._redis.rpush(output_key, str(output))
+
+        return output
+
+    return wrapper
+
 def count_calls(method: Callable) -> Callable:
     """
     Arg: Callable
@@ -97,29 +123,3 @@ class Cache:
         inputs and outputs
         """
         return None
-
-def call_history(method: Callable) -> Callable:
-    """
-    single parameter named method,
-    callable and returns a callable
-    """
-
-    @wraps(method)
-    def wrapper(self, *args, **kwargs):
-        """
-        wrapper function
-        """
-        key = method.__qualname__
-
-        input_key = f"{key}:inputs"
-        output_key = f"{key}:outputs"
-
-        self._redis.rpush(input_key, str(args))
-
-        output = method(self, *args, **kwargs)
-
-        self._redis.rpush(output_key, str(output))
-
-        return output
-
-    return wrapper
