@@ -9,7 +9,7 @@ from typing import Union, Callable
 from functools import wraps
 
 
-def count_calls(func: Callable) -> Callable:
+def count_calls(method: Callable) -> Callable:
     """
     Arg: Callable
     returns: Callable
@@ -17,18 +17,18 @@ def count_calls(func: Callable) -> Callable:
     count for key everytime method is call
     """
 
-    @wraps(func)
+    @wraps(method)
     def wrapper(self, *args, **kwargs):
         """
         wrapper function
         first arg
         """
-        key = func.__qualname__
+        key = method.__qualname__
 
         self._redis.incr(key)
 
         current_count = self._redis.get(key).decode('utf-8')
-        return func(self, *args, **kwargs)
+        return method(self, *args, **kwargs)
 
     return wrapper
 
