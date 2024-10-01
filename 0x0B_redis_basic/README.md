@@ -16,3 +16,8 @@ Learn how to use redis as a simple cache
 - Exists: Checks if one or more keys exist
 - Del: Removes specified keys
 - Info: Provides information about server
+- RPUSH: appends one or more values to end of REDIS LIST. USE TO STORE INPUTS AND OUTPUTS OF REDIS  
+- LPUSH: Appends one or more values to beginning of Redis list
+- LRANGE: retrieves range of elements from list.
+
+- Decorate: store function's input arguments, store function's output, return output of original function after storing
