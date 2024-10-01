@@ -6,6 +6,31 @@ Redis basic
 import redis
 import uuid
 from typing import Union, Callable
+from functools import wraps
+
+
+def count_calls(func: Callable) -> Callable:
+    """
+    Arg: Callable
+    returns: Callable
+    create/return function that incre
+    count for key everytime method is call
+    """
+
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        """
+        wrapper function
+        first arg
+        """
+        key = func.__qualname__
+
+        self._redis.incr(key)
+
+        current_count = self._redis.get(key).decode('utf-8')
+        return func(self, *args, **kwargs)
+
+    return wrapper
 
 
 class Cache:
@@ -59,3 +84,13 @@ class Cache:
         with correct conversion function
         """
         return self.get(key, lambda x: int(x))
+
+    def replay(self):
+        """
+        display history of called particular
+        function
+        using lrange and zip to loop over
+        inputs and outputs
+        """
+        return None
+    
