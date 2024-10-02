@@ -115,11 +115,17 @@ class Cache:
         """
         return self.get(key, lambda x: int(x))
 
-    def replay(self):
-        """
-        display history of called particular
-        function
-        using lrange and zip to loop over
-        inputs and outputs
-        """
-        return None
+def replay(func: Callable):
+    """
+    display history of called particular
+    function
+    using lrange and zip to loop over
+    inputs and outputs
+    """
+    key = func.__qualname__
+
+    inputs = f"{key}:inputs"
+    ouputs = f"{key}:inputs"
+
+    for input_v, output_v in zip(inputs, ouputs):
+        return key
