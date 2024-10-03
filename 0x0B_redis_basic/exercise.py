@@ -128,8 +128,8 @@ def replay(cache: Cache, func: Callable):
     outputs_key = f"{key}:outputs"
 
     # Fetch all inputs/outputs from Redis
-    inputs = red.lrange(inputs_key, 0, -1)
-    outputs = red.lrange(outputs_key, 0, -1)
+    inputs = cache._redis.lrange(inputs_key, 0, -1)
+    outputs = cache._redis.lrange(outputs_key, 0, -1)
 
 
     for input_v, output_v in zip(inputs, outputs):
