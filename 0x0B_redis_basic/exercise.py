@@ -115,7 +115,7 @@ class Cache:
         """
         return self.get(key, lambda x: int(x))
 
-def replay(func: Callable):
+def replay(cache: Cache, func: Callable):
     """
     display history of called particular
     function
@@ -124,8 +124,13 @@ def replay(func: Callable):
     """
     key = func.__qualname__
 
-    inputs = f"{key}:inputs"
-    ouputs = f"{key}:inputs"
+    inputs_key = f"{key}:inputs"
+    outputs_key = f"{key}:outputs"
 
-    for input_v, output_v in zip(inputs, ouputs):
-        return key
+    # Fetch all inputs/outputs from Redis
+    inputs = red.lrange(inputs_key, 0, -1)
+    outputs = red.lrange(outputs_key, 0, -1)
+
+
+    for input_v, output_v in zip(inputs, outputs):
+        print(f"{key}(*({input_v.decode('utf-8')},)) -> {output_v.decode('utf-8')}")
