@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS metal (
 
 SOURCE metal_bands.sql;
 
-SELECT origin, SUM(nb_fans) AS non_unique_fans,
+SELECT origin, SUM(nb_fans) AS nb_fans,
         RANK() OVER (ORDER BY SUM(nb_fans) DESC) AS rank
 FROM metal
 GROUP BY origin
