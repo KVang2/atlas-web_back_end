@@ -1,4 +1,3 @@
 #!/usr/bin/env python3
-"""List all database in MongoDB"""
-
+// List all database in MongoDB
 show dbs
