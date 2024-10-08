@@ -15,7 +15,7 @@ BEGIN
 
     -- Update
     UPDATE users
-    SET avg_score = average_score
+    SET average_score = average_score
     WHERE id = p_user_id;
 END //
 
