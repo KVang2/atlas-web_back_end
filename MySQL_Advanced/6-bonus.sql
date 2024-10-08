@@ -22,7 +22,7 @@ BEGIN
     END IF;
 
     -- add correction in user and project combo
-    INSERT INTO corrections (user_id, project_id, score))
+    INSERT INTO corrections (user_id, project_id, score)
     VALUES (user_id, project_id, score)
 END //
 
