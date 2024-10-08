@@ -11,7 +11,7 @@ BEGIN
     -- Caclculate average score for user_id
     SELECT AVG(score) INTO avg_score
     FROM corrections
-    WHERE corrections.user_id = p_user_id;
+    WHERE user_id = p_user_id;
 
     -- Update
     UPDATE users
