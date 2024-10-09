@@ -2,7 +2,7 @@
 -- compute and store average score for student
 DELIMITER //
 
-CREATE PROCEDURE ComputerAverageScoreForUser (
+CREATE PROCEDURE ComputeAverageScoreForUser (
     IN p_user_id INT
 )
 BEGIN
@@ -17,6 +17,7 @@ BEGIN
     UPDATE users
     SET average_score = avg_score
     WHERE id = p_user_id;
+
 END //
 
 DELIMITER ;
