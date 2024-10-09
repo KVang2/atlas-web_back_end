@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 """ list all documents in python """
-import pymongo
+from pymongo import MongoClient
 
 def list_all(mongo_collection):
     """ Lists all documents """
-    if mongo_collection.count_documents({}) == 0:
-        return []
-
-    return list(mongo_collection.find())
+    return mongo_collection.find()
