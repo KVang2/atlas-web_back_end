@@ -1,4 +1,6 @@
 -- creates function safeDiv (divides and return)
+DELIMITER //
+
 CREATE FUNCTION SafeDiv(a INT, b INT)
 RETURNS FLOAT
 BEGIN
@@ -7,4 +9,6 @@ BEGIN
     ELSE
         RETURN a / b;
     END if;
-END;
+END //
+
+DELIMITER ;
