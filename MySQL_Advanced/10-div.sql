@@ -5,6 +5,6 @@ BEGIN
     IF b = 0 THEN
         RETURN 0;
     ELSE
-        RETURNS a / b;
+        RETURN a / b;
     END if;
 END;
