@@ -8,7 +8,7 @@ BEGIN
         RETURN 0;
     ELSE
         RETURN a / b;
-    END if;
+    END IF;
 END //
 
 DELIMITER ;
