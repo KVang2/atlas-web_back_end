@@ -2,6 +2,7 @@
 """ Insert new documents in python """
 from pymongo import MongoClient
 
+
 def insert_school(mongo_collection, **kwargs):
     """
     mongo collection, pymongo collection object
