@@ -10,6 +10,9 @@
 - use ES6 with Node JS with Babel-node
 - use Nodemon to develop faster
 
+## Introduction to Node.js
+- Open-source, cross-platform javascript runtime environment. Node.js app runs in single process, provides set of asynchronous I/O primitives in its standard library, preventing JavaScript code from blocking and generally.
+
 # Tasks 0: Executing basic javascript with Node JS
 
 # Task 1:
