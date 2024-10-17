@@ -1,6 +1,4 @@
 const express = require('express')
-const fs = require('fs').promises
-const path = require('path')
 
 // create express app
 const app = express();
