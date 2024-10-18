@@ -1,10 +1,17 @@
 const assert = require('assert');
-const calculateNumber = require('../0-calcul');
+const calculateNumber = require('./0-calcul');
 
-class calculateNumber(unittest.TestCase);
+describe ("calculateNumber", function () {
 
-    def test_calculatePositiveNumber(self);
-        self.assertEqual(add_and_roun(2.7, 3.9), 7)
+    it("Should return 7", function() {
+        assert.strictEqual(calculateNumber(2.7, 3.9), 7);
+    });
 
-if __name__ = 'main';
-    unittest.main()
+    it('Should return 5', function() {
+        assert.strictEqual(calculateNumber(1.2, 4.3), 5)
+    });
+
+    it('Should return -10', function() {
+        assert.strictEqual(calculateNumber(-5.2, -5.3), -10);
+    });
+});
