@@ -7,10 +7,6 @@ describe ("calculateNumber", function() {
         assert.strictEqual(calculateNumber('SUM', 1.4, 4.5), 6);
     });
 
-    it("if sum should return sum of 6", function() {
-        assert.strictEqual(calculateNumber('SUM', 1.4, 4.5), 6);
-    });
-
     it("if SUBTRACTION should return 8", function() {
         assert.strictEqual(calculateNumber('SUBTRACT', 18, 10), 8);
     });

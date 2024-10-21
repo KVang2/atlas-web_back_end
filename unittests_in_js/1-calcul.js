@@ -11,9 +11,11 @@ function calculateNumber(type, a, b) {
     if (type === 'DIVIDE') {
         const rA = Math.round(a);
         const rB = Math.round(b);
-        if (b === 0) {
+        if (rB === 0) {
             return "Error";
         }
         return rA / rB;
     }
 }
+
+module.exports = calculateNumber;
