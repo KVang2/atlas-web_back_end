@@ -6,13 +6,13 @@ describe ('sendPaymentRequestToAPI', function() {
     it("Test spy SUM method", function() {
         const spy = sinon.spy(Utils, 'calculateNumber');
 
-        const totalAmount = 10;
+        const totalAmount = 100;
         const totalShipping = 20;
 
         sendPaymentRequestToApi(totalAmount, totalShipping);
 
         sinon.assert.calledOnce(spy);
-        sinon.assert.calledwith(spy, 'SUM', totalAmount, totalShipping);
+        sinon.assert.calledWith(spy, 'SUM', totalAmount, totalShipping);
 
         spy.restore();
     });
