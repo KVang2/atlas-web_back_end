@@ -1,6 +1,6 @@
 const sinon = require('sinon');
 const Utils = require('./utils');
-const sendPaymentRequestToApi = require('./3-payment');
+const sendPaymentRequestToApi = require('./4-payment');
 
 describe ('sendPaymentRequestToAPI', function() {
     it("Test spy SUM method", function() {
@@ -20,5 +20,22 @@ describe ('sendPaymentRequestToAPI', function() {
 
         // restore after spying
         spy.restore();
+    });
+});
+
+describe("test suit for stub", function() {
+    it("Stub methods", function() {
+        const stub = sinon.stub(Utils, 'calculateNumber');
+
+        stub.withArgs('SUM', 10, 20).returns(100);
+
+        stub.returns(10);
+
+        sendPaymentRequestToApi(100, 20);
+
+        sinon.assert.calledOnce(stub);
+        sinon.assert.calledWith(stub, 'SUM', 100, 20);
+
+        stub.restore();
     });
 });

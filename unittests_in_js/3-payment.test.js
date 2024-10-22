@@ -18,7 +18,7 @@ describe ('sendPaymentRequestToAPI', function() {
         sinon.assert.calledOnce(spy);
         sinon.assert.calledWith(spy, 'SUM', totalAmount, totalShipping);
 
-        // restore after spying
+        // restore after
         spy.restore();
     });
 });
