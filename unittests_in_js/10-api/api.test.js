@@ -1,3 +1,5 @@
+// Endpoints
+
 // Index page
 const assert = require('assert');
 const request = require('request');
@@ -50,6 +52,25 @@ describe('Cart page', () => {
             if (error)
                 return done(error);
             assert.strictEqual(response.statusCode, 404);
+            done();
+        });
+    });
+});
+
+// payments
+describe ('login page and payments', () => {
+    it('return 200 status code', function(done) {
+        request.get('http://localhost:7865/available_payments', (error, response, body) => {
+            const paymentResponse = {
+                payment_methods: {
+                    credit_cards: true,
+                    paypal: false
+                }
+            };
+            if (error)
+                return done(error);
+            assert.strictEqual(response.statusCode, 200);
+            assert.deepStrictEqual(JSON.parse(body), paymentResponse);
             done();
         });
     });
