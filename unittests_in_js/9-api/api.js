@@ -3,6 +3,7 @@ const app = express();
 
 
 app.get('/', (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
     res.status(200).send('Welcome to the payment system');
 });
 
