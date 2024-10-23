@@ -3,10 +3,10 @@ const http = require('http');
 const fs = require('fs').promises;
 
 // create function countStudents
-function countStudents(path) {
+async function countStudents(path) {
     // read file
-    return fs.readFile(path, 'utf-8')
-        .then((data) => {
+    try {
+            const data = await fs.readFile(path, 'utf-8')
 
             // Split data into lines and filter empty line
             const lines = data.split('\n').filter(line => line.trim());
@@ -15,11 +15,10 @@ function countStudents(path) {
             const students = lines.slice(1);
 
             if (students.length === 0) {
-                console.log('Number of students: 0');
-                return;
+                return 'Number of students: 0';
             }
     
-            console.log(`Number of students: ${students.length}`);
+            let output = `Number of students: ${students.length}`;
 
             // store students by their field
             const fields = {};
@@ -37,12 +36,13 @@ function countStudents(path) {
 
            for (const field in fields) {
                 const studentList = fields[field];
-                console.log(`Number of students in ${field}: ${studentList.length}. List: ${studentList.join(', ')}`);
+                output += `Number of students in ${field}: ${studentList.length}. List: ${studentList.join(', ')}`;
             }
-        })
-        .catch((error) => {
+
+            return output;
+        } catch (error) {
             throw new Error('Cannot load the database');
-        });
+        };
 }
 
 // http server
@@ -55,14 +55,26 @@ const app = http.createServer(async (req, res) => {
     // checking requested url path
     } else if (req.url === '/students') {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.write('This is the list of our students:\n');
+        res.write('This is the list of our students:');
+
+        const databasePath = process.argv[2];
+
+        if (!databasePath) {
+            res.write('No database provided\n');
+            res.end();
+            return;
+        }
 
         try {
-            const studentData = await countStudents('databasePath');
+            const studentData = await countStudents(databasePath);
             res.write(studentData);
         } catch (error) {
             res.write('Cannot load the database');
         }
+        res.end();
+    } else {
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.write('Not Found');
         res.end();
     }
 }).listen(1245);
