@@ -1,38 +1,33 @@
 // Index page
 const assert = require('assert');
-const app = require('./api');
-const request = require('supertest');
+const request = require('request');
+
+const base = 'http://localhost:7865';
 
 describe ('Index page', () => {
     it('return 200 status code', function(done) {
-        request(app)
-        .get('/')
-        .end(function(err, res) {
-            if (err)
-                return done(err);
-            assert.strictEqual(res.status, 200);
+        request.get(base, (error, response, body) => {
+            if (error)
+                return done(error);
+            assert.strictEqual(response.statusCode, 200);
             done();
         });
     });
 
     it('check for correct message', function(done) {
-        request(app)
-        .get('/')
-        .end(function(err, res) {
-            if (err)
-                return done(err);
-            assert.strictEqual(res.text, 'Welcome to the payment system');
+        request.get(base, (error, response, body) => {
+            if (error)
+                return done(error);
+            assert.strictEqual(body, 'Welcome to the payment system');
             done();
         });
     });
 
     it('Return correct content-type', (done) => {
-        request(app)
-        .get('/')
-        .end(function(err, res) {
-            if (err)
-                return done(err);
-            assert.strictEqual(res.headers['content-type'], 'text/html; charset=utf-8');
+        request.get(base, (error, response, body) => {
+            if (error)
+                return done(error);
+            assert.strictEqual(response.headers['content-type'], 'text/html; charset=utf-8');
             done();
         });
     });
