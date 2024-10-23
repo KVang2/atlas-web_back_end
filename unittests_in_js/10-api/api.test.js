@@ -57,8 +57,9 @@ describe('Cart page', () => {
     });
 });
 
-// payments
-describe ('login page and payments', () => {
+// Login/post, payments
+describe ('login/post page and payments', () => {
+    it()
     it('return 200 status code', function(done) {
         request.get('http://localhost:7865/available_payments', (error, response, body) => {
             const paymentResponse = {
