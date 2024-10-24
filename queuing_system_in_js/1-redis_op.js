@@ -1,32 +1,12 @@
 // redis-client.js
-import { createClient } from 'redis';
+import { createClient, print } from 'redis';
 
 // create redis client
 const client = createClient();
 
-// function set for school
-function setNewSchool(schoolName, value) {
-    client.set(schoolName, value, print);
-}
-
-// function set displaySchoolvalue
-function displaySchoolValue(schoolName) {
-    client.get(schoolName, (error, reply) => {
-        if (error) {
-            console.log(`Error on value for key ${schoolName}: ${error.message}`);
-        } else {
-            console.log(`Value for ${schoolName}: ${reply}`);
-        }
-    });
-}
-
 // Client connect handling
 client.on('connect', () => {
-    console.log('Redis client connected to the server');
-
-    displaySchoolValue('Holberton');
-    setNewSchool('HolbertonSanFrancisco', '100');
-    displaySchoolValue('HolbertonSanFrancisco');
+    console.log('Redis client connected to the server')
 });
 
 // error handling
@@ -34,5 +14,31 @@ client.on('error', (error) => {
     console.log(`Redis client not connected to the server: ${error.message}`);
 });
 
+// function set for school
+function setNewSchool(schoolName, value, callback) {
+    client.set(schoolName, value, print)
+    if (callback) callback();
+}
+
+// function set displaySchoolvalue
+function displaySchoolValue(schoolName, callback) {
+    client.get(schoolName, (error, reply) => {
+        if (error) {
+            console.log(`Error on value for key ${schoolName}: ${error.message}`);
+        } else {
+            console.log(`${reply}`);
+        }
+        if (callback) callback();
+    });
+}
+
 // Connecting to Redis
-client.connect();
+client.connect().then(() => {
+    displaySchoolValue('Holberton', () => {
+        setNewSchool('HolbertonSanFrancisco', '100', () => {
+            displaySchoolValue('HolbertonSanFrancisco', () => {
+                client.quit();
+            });
+        });
+    });
+});
